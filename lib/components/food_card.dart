@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class FoodCard extends StatelessWidget {
-  const FoodCard({
-    Key? key,
-  }) : super(key: key);
+  String food_image;
+  String food_name;
+  String food_description;
+  String name;
+  String writer_image;
+  FoodCard({required this.food_name,required this.name,required this.food_description,required this.food_image,required this.writer_image});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class FoodCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
                 image: AssetImage(
-                    'assets/images/balanced.jpg'),
+                    'assets/images/$food_image'),
               ),
             ),
             height: 125.0,
@@ -34,11 +37,11 @@ class FoodCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
-                'Grilled Chicken',
+                '$food_name',
                 style: TextStyle(fontFamily: 'Montserrat'),
               ),
               Text(
-                'with Fruit Salad',
+                '$food_description',
                 style: TextStyle(fontFamily: 'Montserrat'),
               ),
               SizedBox(
@@ -64,7 +67,7 @@ class FoodCard extends StatelessWidget {
                       BorderRadius.circular(12.5),
                       image: DecorationImage(
                         image: AssetImage(
-                            'assets/images/chris.jpg'),
+                            'assets/images/$writer_image'),
                       ),
                     ),
                   ),
@@ -72,7 +75,7 @@ class FoodCard extends StatelessWidget {
                     width: 10.0,
                   ),
                   Text(
-                    'James Kaiser',
+                    '$name',
                     style:
                     TextStyle(fontFamily: 'Montserrat'),
                   ),

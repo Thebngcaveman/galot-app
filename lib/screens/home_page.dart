@@ -1,33 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:galot_eat/components/food_card.dart';
 import 'package:galot_eat/components/new_recipes.dart';
 
 class HomePage extends StatelessWidget {
-  int getColorHexFromStr(String colorStr) {
-    colorStr = "FF" + colorStr;
-    colorStr = colorStr.replaceAll("#", "");
-    int val = 0;
-    int len = colorStr.length;
-    for (int i = 0; i < len; i++) {
-      int hexDigit = colorStr.codeUnitAt(i);
-      if (hexDigit >= 48 && hexDigit <= 57) {
-        val += (hexDigit - 48) * (1 << (4 * (len - 1 - i)));
-      } else if (hexDigit >= 65 && hexDigit <= 70) {
-        // A..F
-        val += (hexDigit - 55) * (1 << (4 * (len - 1 - i)));
-      } else if (hexDigit >= 97 && hexDigit <= 102) {
-        // a..f
-        val += (hexDigit - 87) * (1 << (4 * (len - 1 - i)));
-      } else {
-        throw new FormatException("An error occurred when converting a color");
-      }
-    }
-    return val;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +14,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               Container(
                 height: 250.0,
-                color: Color(getColorHexFromStr('#fff5ea')),
+                color: Colors.orange,
               ),
               Column(
                 children: <Widget>[
@@ -119,15 +96,33 @@ class HomePage extends StatelessWidget {
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
-                        FoodCard(),
+                        FoodCard(
+                          food_image: "kha_moo.jpg",
+                          food_name: "Khao Khamo",
+                          food_description: "with gravy sauce",
+                          name: "Sean Bean",
+                          writer_image: "sean_bean.jpg",
+                        ),
                         SizedBox(
                           width: 10,
                         ),
-                        FoodCard(),
+                        FoodCard(
+                          food_image: "pad_thai.jpg",
+                          food_name: "Pad Thai",
+                          food_description: "match your taste",
+                          name: "Tom Hank",
+                          writer_image: "tom_hank.jpg",
+                        ),
                         SizedBox(
                           width: 10,
                         ),
-                        FoodCard(),
+                        FoodCard(
+                          food_image: "mun_kai.jpg",
+                          food_name: "Khao Mun Kai",
+                          food_description: "with soup",
+                          name: "Matt Demon",
+                          writer_image: "mat_demon.jpg",
+                        ),
                       ],
                     ),
                   ),
@@ -144,11 +139,10 @@ class HomePage extends StatelessWidget {
             child: Text(
               '16 JULY 2021',
               style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.bold,
-                fontSize: 15.0,
-                color: Colors.grey
-              ),
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15.0,
+                  color: Colors.grey),
             ),
           ),
           Container(
@@ -179,14 +173,6 @@ class HomePage extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  // child: BackdropFilter(
-                  //   filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-                  //   child: Container(
-                  //     decoration: BoxDecoration(
-                  //       color: Colors.white.withOpacity(0),
-                  //     ),
-                  //   ),
-                  // ),
                 ),
               ),
               NewRecipes()
@@ -198,4 +184,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
