@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:galot_eat/components/food_card.dart';
+import 'package:galot_eat/components/new_recipes.dart';
 
 class HomePage extends StatelessWidget {
   int getColorHexFromStr(String colorStr) {
@@ -45,6 +48,7 @@ class HomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(25.0),
                       child: TextFormField(
                         decoration: InputDecoration(
+                          border: InputBorder.none,
                           prefixIcon: Icon(
                             Icons.search,
                             color: Colors.black,
@@ -116,6 +120,14 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
                         FoodCard(),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        FoodCard(),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        FoodCard(),
                       ],
                     ),
                   ),
@@ -123,8 +135,67 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
+          SizedBox(
+            height: 15.0,
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.only(left: 15),
+            child: Text(
+              '16 JULY 2021',
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+                color: Colors.grey
+              ),
+            ),
+          ),
+          Container(
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.only(left: 15),
+            child: Text(
+              'FOODS',
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                fontSize: 30.0,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          Stack(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 12.0, right: 12.0),
+                child: Container(
+                  height: 275.0,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15.0),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/breakfast.jpg'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  // child: BackdropFilter(
+                  //   filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                  //   child: Container(
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.white.withOpacity(0),
+                  //     ),
+                  //   ),
+                  // ),
+                ),
+              ),
+              NewRecipes()
+              //TODO make another component
+            ],
+          ),
         ],
       ),
     );
   }
 }
+
